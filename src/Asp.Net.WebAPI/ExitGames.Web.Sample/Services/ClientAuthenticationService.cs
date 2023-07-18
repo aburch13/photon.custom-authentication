@@ -23,15 +23,18 @@ namespace ExitGames.Web.Sample.Services
             this.userRepository = repository ?? new UserRepository();
         }
 
-        public bool Authenticate(string userName, string token)
+        public int Authenticate(string userName, string token)
         {
             // TODO use repository to get user and authenticate
-            if (userName == token)
+            if(userRepository.CheckUserID(userName))
             {
-                return true;
+                if (userRepository.VerifyUser(userName, token))
+                    return 0;
+                else
+                    return 1;
             }
 
-            return false;
+            return 2;
         }
     }
 }

@@ -11,5 +11,14 @@ namespace ExitGames.Web.Sample.Services
 {
     public class UserRepository : IUserRepository
     {
+        public bool CheckUserID(string ID)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool VerifyUser(string ID, string token)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

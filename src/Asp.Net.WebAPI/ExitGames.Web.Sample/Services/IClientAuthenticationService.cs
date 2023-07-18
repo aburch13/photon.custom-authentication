@@ -11,6 +11,6 @@ namespace ExitGames.Web.Sample.Services
 {
     public interface IClientAuthenticationService
     {
-        bool Authenticate(string userName, string token);
+        int Authenticate(string userName, string token);
     }
 }

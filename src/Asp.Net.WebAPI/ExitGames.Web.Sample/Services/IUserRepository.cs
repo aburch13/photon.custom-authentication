@@ -11,5 +11,7 @@ namespace ExitGames.Web.Sample.Services
 {
     public interface IUserRepository
     {
+        bool CheckUserID(string ID);
+        bool VerifyUser(string ID, string token);
     }
 }

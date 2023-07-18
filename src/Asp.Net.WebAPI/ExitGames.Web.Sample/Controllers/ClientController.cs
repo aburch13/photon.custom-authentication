@@ -53,20 +53,27 @@ namespace ExitGames.Web.Sample.Controllers
                 return resultErrorInput;
             }
 
-            bool authenticated = this.AuthenticationService.Authenticate(userName, token);
-            if (authenticated)
+            int authenticated = this.AuthenticationService.Authenticate(userName, token);
+            if (authenticated == 0)
             {
                 // authentication ok
                 var resultOk = new Result { ResultCode = 1 };
                 return resultOk;
             }
 
+
             // authentication failed
-            var resultError = new Result
+            var resultError = new Result();
+            if (authenticated == 1)
             {
-                ResultCode = 2,
-                ////Message = "whatever reason" // optional
-            };
+                resultError.ResultCode = 2;
+                resultError.Message = "tokenInvalid";
+            }
+            else if (authenticated == 2)
+            {
+                resultError.ResultCode = 2;
+                resultError.Message = "userNotFound";
+            }
             return resultError;
         }
     }
